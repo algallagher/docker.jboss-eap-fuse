@@ -16,8 +16,6 @@ set -e
 # load the versions
 . ./loadenv.sh
 
-FROM_IMAGE_NAME=jlgrock/centos-oraclejdk
-FROM_IMAGE_VERSION=${CENTOS}-${JDK}
 FILES_IMAGE_NAME=jlgrock/jboss-eap-fuse-files
 IMAGE_NAME=jlgrock/jboss-eap-fuse
 IMAGE_VERSION=${JBOSS_EAP}
@@ -50,10 +48,7 @@ if [ ! -e eap-fuse-files/install-files/jboss-datagrid-6.6.0-eap-modules-library.
     exit 255
 fi
 
-# pull latest from repo
-docker pull ${FROM_IMAGE_NAME}:${FROM_IMAGE_VERSION}
-
-# Create a temporary image
+# Create a temporary image - assuming you do a base image pull yourself
 echo "Creating JBoss EAP with Fuse Files Image ..."
 docker build -q -t ${TMP_IMAGE_NAME}:${IMAGE_VERSION} eap-fuse-files/
 
