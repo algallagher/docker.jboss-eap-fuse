@@ -16,7 +16,7 @@ RUN unzip -q $INSTALL_DIR/jboss-datagrid-6.6.0-eap-modules-library.zip \
 	&& mv jboss-datagrid-6.6.0-eap-modules-library/modules/* \
 		$EAP_HOME/modules/system/layers/jdg \
 	&& rm -rf jboss-datagrid-6.6.0-eap-modules-library/ \
-	&& echo -n ",jdg" >> $EAP_HOME/modules/layers.conf
+	&& sed -i -e '$s/$/,jdg/' $EAP_HOME/modules/layers.conf
 
 
 RUN rm -rf $INSTALL_DIR
