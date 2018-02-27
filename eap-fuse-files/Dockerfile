@@ -12,10 +12,10 @@ WORKDIR $EAP_HOME
 RUN java -jar $INSTALL_DIR/fuse-eap-installer-6.2.1.redhat-084.jar
 RUN java -jar $INSTALL_DIR/fuse-integration-eap-installer-1.3.0.redhat-002.jar
 RUN java -jar $INSTALL_DIR/fuse-eap-installer-6.2.1.redhat-090.jar
-RUN unzip -q $INSTALL_DIR/jboss-datagrid-6.6.0-eap-modules-library.zip \
-	&& mv jboss-datagrid-6.6.0-eap-modules-library/modules/* \
+RUN unzip -q $INSTALL_DIR/jboss-datagrid-7.1.0-eap-modules-library.zip \
+	&& mv jboss-datagrid-7.1.0-eap-modules-library/modules/* \
 		$EAP_HOME/modules/system/layers/jdg \
-	&& rm -rf jboss-datagrid-6.6.0-eap-modules-library/ \
+	&& rm -rf jboss-datagrid-7.1.0-eap-modules-library/ \
 	&& sed -i -e '$s/$/,jdg/' $EAP_HOME/modules/layers.conf
 
 
