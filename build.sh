@@ -42,8 +42,8 @@ if [ ! -e eap-fuse-files/install-files/fuse-eap-installer-6.2.1.redhat-090.jar ]
     exit 255
 fi
 
-if [ ! -e eap-fuse-files/install-files/jboss-datagrid-6.6.0-eap-modules-library.zip ]; then
-    echo "Could not find file install-files/jboss-datagrid-6.6.0-eap-modules-library.zip"
+if [ ! -e eap-fuse-files/install-files/jboss-datagrid-7.1.0-eap-modules-library.zip ]; then
+    echo "Could not find file install-files/jboss-datagrid-7.1.0-eap-modules-library.zip"
     echo "Please add the required file first."
     exit 255
 fi
