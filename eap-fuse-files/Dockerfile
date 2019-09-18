@@ -1,22 +1,19 @@
-FROM jlgrock/jboss-eap:6.4.6
+FROM jlgrock/jboss-eap:7.2.0
 MAINTAINER Justin Grant <jlgrock@gmail.com>
 
 ENV EAP_PARENT /opt/app/jboss
-ENV EAP_HOME $EAP_PARENT/jboss-eap
-ENV INSTALL_DIR $EAP_PARENT/install-files
+ENV EAP_HOME ${EAP_PARENT}/jboss-eap
+ENV INSTALL_DIR ${EAP_PARENT}/install-files
 
-RUN mkdir -p $INSTALL_DIR/jdg $EAP_HOME/modules/system/layers/jdg
-ADD install-files/ $INSTALL_DIR
+RUN mkdir -p ${INSTALL_DIR}/jdg ${EAP_HOME}/modules/system/layers/jdg
+ADD install-files/ ${INSTALL_DIR}
 
-WORKDIR $EAP_HOME 
-RUN java -jar $INSTALL_DIR/fuse-eap-installer-6.2.1.redhat-084.jar
-RUN java -jar $INSTALL_DIR/fuse-integration-eap-installer-1.3.0.redhat-002.jar
-RUN java -jar $INSTALL_DIR/fuse-eap-installer-6.2.1.redhat-090.jar
-RUN unzip -q $INSTALL_DIR/jboss-datagrid-7.1.0-eap-modules-library.zip \
-	&& mv jboss-datagrid-7.1.0-eap-modules-library/modules/* \
-		$EAP_HOME/modules/system/layers/jdg \
-	&& rm -rf jboss-datagrid-7.1.0-eap-modules-library/ \
-	&& sed -i -e '$s/$/,jdg/' $EAP_HOME/modules/layers.conf
+WORKDIR ${EAP_HOME}
+RUN java -jar ${INSTALL_DIR}/fuse-eap-installer-7.3.0.jar
+RUN /usr/bin/unzip -q ${INSTALL_DIR}/jboss-datagrid-7.3.0-1-eap-modules.zip \
+	&& mv jboss-datagrid-7.3.0-eap-modules/modules/* \
+		${EAP_HOME}/modules/system/layers/jdg \
+	&& rm -rf jboss-datagrid-7.3.0-eap-modules/ \
+	&& sed -i -e '$s/$/,jdg/' ${EAP_HOME}/modules/layers.conf
 
-
-RUN rm -rf $INSTALL_DIR
+RUN rm -rf ${INSTALL_DIR}

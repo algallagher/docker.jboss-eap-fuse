@@ -1,6 +1,7 @@
 # Introduction
 
-An extension to the EAP container image that has all of the bells and whistles.  This includes the EAP-fuse subsystem, the fuse-integration subsystem, the bpms subsystem, and the jboss-datagrid modules.
+An extension to the EAP container image that has all of the bells and whistles.  This includes the EAP-fuse subsystem, 
+the fuse-integration subsystem, the bpms subsystem, and the jboss-datagrid modules.
 
 # Hardware Requirements
 
@@ -12,7 +13,8 @@ An extension to the EAP container image that has all of the bells and whistles. 
 
 ## Option 1: Download from a Docker Registry
 
-These builds are not performed by the **Docker Trusted Build** service because it contains proprietary code, but this method can be used if using a Private Docker Registry.
+These builds are not performed by the **Docker Trusted Build** service because it contains proprietary code, but this 
+method can be used if using a Private Docker Registry.
 
 ```bash
 docker pull <private_registry_name>/jlgrock/jboss-eap-fuse:$VERSION

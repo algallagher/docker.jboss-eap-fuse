@@ -18,32 +18,20 @@ set -e
 
 FILES_IMAGE_NAME=jlgrock/jboss-eap-fuse-files
 IMAGE_NAME=jlgrock/jboss-eap-fuse
-IMAGE_VERSION=${JBOSS_EAP}
+IMAGE_VERSION="${JBOSS_FUSE}"
 TMP_IMAGE_NAME="${IMAGE_NAME}-temp"
 
 echo "Processing for ${IMAGE_NAME}:${IMAGE_VERSION}"
 
 # TODO update these file checks so they are more generic
-if [ ! -e eap-fuse-files/install-files/fuse-eap-installer-6.2.1.redhat-084.jar ]; then
-    echo "Could not find file install-files/fuse-eap-installer-6.2.1.redhat-084.jar"
+if [[ ! -e eap-fuse-files/install-files/fuse-eap-installer-7.3.0.jar ]]; then
+    echo "Could not find file install-files/fuse-eap-installer-7.3.0.jar"
     echo "Please add the required file first."
     exit 255
 fi
 
-if [ ! -e eap-fuse-files/install-files/fuse-integration-eap-installer-1.3.0.redhat-002.jar ]; then
-    echo "Could not find file install-files/fuse-integration-eap-installer-1.3.0.redhat-002.jar"
-    echo "Please add the required file first."
-    exit 255
-fi
-
-if [ ! -e eap-fuse-files/install-files/fuse-eap-installer-6.2.1.redhat-090.jar ]; then
-    echo "Could not find file install-files/fuse-eap-installer-6.2.1.redhat-090.jar"
-    echo "Please add the required file first."
-    exit 255
-fi
-
-if [ ! -e eap-fuse-files/install-files/jboss-datagrid-7.1.0-eap-modules-library.zip ]; then
-    echo "Could not find file install-files/jboss-datagrid-7.1.0-eap-modules-library.zip"
+if [[ ! -e eap-fuse-files/install-files/jboss-datagrid-7.3.0-1-eap-modules.zip ]]; then
+    echo "Could not find file install-files/jboss-datagrid-7.3.0-1-eap-modules.zip"
     echo "Please add the required file first."
     exit 255
 fi
@@ -72,7 +60,7 @@ docker images -a | awk '{ print $1, $3 }' | grep ${TMP_IMAGE_NAME} | awk '{ prin
 echo "Creating JBoss EAP with Fuse Image ${IMAGE_NAME}:${IMAGE_VERSION}..."
 docker build -q --rm -t ${IMAGE_NAME}:${IMAGE_VERSION} eap-fuse/
 
-if [ $? -eq 0 ]; then
+if [[ $? -eq 0 ]]; then
     echo "Container Built"
 else
     echo "Error: Unable to Build Container"
