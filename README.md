@@ -22,7 +22,7 @@ docker pull <private_registry_name>/jlgrock/jboss-eap-fuse:$VERSION
 
 ## Option 2: Building the Image
 
-* [Download JBoss EAP 6.4 and the 6.4.6 patch](http://www.jboss.org/products/eap/download/)
+* [Download JBoss EAP Fuse 7.5](http://www.jboss.org/products/eap/download/)
 * Put the file in the local `eap-files/install_files` directory
 * Update the VERSION file
 * [Download JBoss A-MQ](http://www.jboss.org/products/amq/download/) to a temporary directory
@@ -66,35 +66,35 @@ Below is the complete list of available options that can be used to customize yo
 
 Starting a Standalone EAP instance
 ```bash
-docker run -it --rm -P jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -P jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 If the entry point needs to be overridden for debugging and other purposes, the following can be used: 
 ```bash
-docker run -it --entrypoint /bin/bash jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --entrypoint /bin/bash jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 Starting a Master in a Clustered environment
 ```bash
-docker run -it --rm -P -e MODE=DOMAIN_MASTER --name eap_master jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -P -e MODE=DOMAIN_MASTER --name eap_master jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 Adding a Slave in a Clustered environment
 ```bash
-docker run -it --rm -e MODE=DOMAIN_SLAVE --link eap_master:MASTER jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -e MODE=DOMAIN_SLAVE --link eap_master:MASTER jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 Starting a Master in a Clustered environment with an A-MQ connector)
 ```bash
-docker run -it --rm -P -p 9990:9990 -e MODE=DOMAIN_MASTER -e MESSAGE_QUEUE=ACTIVE_MQ -e MQ_HOST=myhost.bla.com --name eap_master jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -P -p 9990:9990 -e MODE=DOMAIN_MASTER -e MESSAGE_QUEUE=ACTIVE_MQ -e MQ_HOST=myhost.bla.com --name eap_master jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 Adding a Slave in a Clustered environment with an A-MQ connector (linked to master server, activemq server specified)
 ```bash
-docker run -it --rm -e MODE=DOMAIN_SLAVE -e MESSAGE_QUEUE=ACTIVE_MQ -e MQ_HOST=myhost.bla.com --link eap_master:MASTER jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -e MODE=DOMAIN_SLAVE -e MESSAGE_QUEUE=ACTIVE_MQ -e MQ_HOST=myhost.bla.com --link eap_master:MASTER jlgrock/jboss-eap-fuse:7.5.0
 ```
 
 Adding a Slave in a Clustered environment with an A-MQ connector (linked to master server and linked to activemq)
 ```bash
-docker run -it --rm -e MODE=DOMAIN_SLAVE -e MESSAGE_QUEUE=ACTIVE_MQ --link eap_master:MASTER --link amq:AMQ jlgrock/jboss-eap-fuse:6.4.6
+docker run -it --rm -e MODE=DOMAIN_SLAVE -e MESSAGE_QUEUE=ACTIVE_MQ --link eap_master:MASTER --link amq:AMQ jlgrock/jboss-eap-fuse:7.5.0
 ```
