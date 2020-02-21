@@ -24,8 +24,8 @@ TMP_IMAGE_NAME="${IMAGE_NAME}-temp"
 echo "Processing for ${IMAGE_NAME}:${IMAGE_VERSION}"
 
 # TODO update these file checks so they are more generic
-if [[ ! -e eap-fuse-files/install-files/fuse-eap-installer-7.3.0.jar ]]; then
-    echo "Could not find file install-files/fuse-eap-installer-7.3.0.jar"
+if [[ ! -e eap-fuse-files/install-files/fuse-eap-installer-7.5.0.jar ]]; then
+    echo "Could not find file install-files/fuse-eap-installer-7.5.0.jar"
     echo "Please add the required file first."
     exit 255
 fi

@@ -1,4 +1,4 @@
-FROM jlgrock/jboss-eap-fuse-files:7.3.0
+FROM jlgrock/jboss-eap-fuse-files:7.5.0
 
 MAINTAINER Justin Grant <jlgrock@gmail.com>
 

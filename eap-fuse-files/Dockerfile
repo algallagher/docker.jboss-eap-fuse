@@ -9,7 +9,7 @@ RUN mkdir -p ${INSTALL_DIR}/jdg ${EAP_HOME}/modules/system/layers/jdg
 ADD install-files/ ${INSTALL_DIR}
 
 WORKDIR ${EAP_HOME}
-RUN java -jar ${INSTALL_DIR}/fuse-eap-installer-7.3.0.jar
+RUN java -jar ${INSTALL_DIR}/fuse-eap-installer-7.5.0.jar
 RUN /usr/bin/unzip -q ${INSTALL_DIR}/jboss-datagrid-7.3.0-1-eap-modules.zip \
 	&& mv jboss-datagrid-7.3.0-eap-modules/modules/* \
 		${EAP_HOME}/modules/system/layers/jdg \
